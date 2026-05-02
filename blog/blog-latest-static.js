@@ -46,8 +46,14 @@
     }
   }
 
-  function termBadgeLabel(termIds) {
+  function termBadgeLabel(termIds, filterKey) {
     var ids = termIds || [];
+    var fk = filterKey && filterKey !== "all" ? filterKey : null;
+    if (fk && ids.indexOf(fk) !== -1) {
+      if (fk === "18") return "SLOTS";
+      if (fk === "17") return "CASINO";
+      if (fk === "19") return "SPORTS";
+    }
     if (ids.indexOf("18") !== -1) {
       return "SLOTS";
     }
@@ -60,11 +66,11 @@
     return "BLOG";
   }
 
-  function renderCard(p) {
+  function renderCard(p, filterKey) {
     var title = esc(p.title);
     var url = esc(p.url);
     var rawImg = (p.image || "").trim();
-    var badge = esc(termBadgeLabel(p.termIds));
+    var badge = esc(termBadgeLabel(p.termIds, filterKey));
     var dateStr = formatDate(p.date);
     var excerpt = esc(p.excerpt || "");
     var media =
@@ -133,7 +139,9 @@
     }
     row.innerHTML =
       '<div class="blog-static-post-list" id="blog-static-post-row" role="list">' +
-      slice.map(renderCard).join("") +
+      slice.map(function (p) {
+        return renderCard(p, filterKey);
+      }).join("") +
       "</div>";
     setStatus(statusEl, list.length, false);
   }
