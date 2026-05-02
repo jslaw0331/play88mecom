@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/providers/:provider",
+      "destination": "/providers/:provider/"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/providers/:slug",
+      "destination": "/providers/:slug/",
+      "permanent": true
+    }
+  ]
+}

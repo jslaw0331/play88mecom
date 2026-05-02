@@ -1,0 +1,10 @@
+				@font-face {
+					font-family: 'futura';
+					src: url('/wp-content/uploads/useanyfont/5499futura.woff2') format('woff2'),
+						url('/wp-content/uploads/useanyfont/5499futura.woff') format('woff');
+					  font-display: auto;
+				}
+
+				.futura{font-family: 'futura' !important;}
+
+		

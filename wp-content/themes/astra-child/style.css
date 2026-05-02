@@ -1,0 +1,407 @@
+/**
+Theme Name: Astra Child
+Author: Brainstorm Force
+Author URI: http://wpastra.com/about/
+Description: Astra is the fastest, fully customizable & beautiful theme suitable for blogs, personal portfolios and business websites. It is very lightweight (less than 50KB on frontend) and offers unparalleled speed. Built with SEO in mind, Astra comes with schema.org code integrated so search engines will love your site. Astra offers plenty of sidebar options and widget areas giving you a full control for customizations. Furthermore, we have included special features and templates so feel free to choose any of your favorite page builder plugin to create pages flexibly. Some of the other features: # WooCommerce Ready # Responsive # Compatible with major plugins # Translation Ready # Extendible with premium addons # Regularly updated # Designed, Developed, Maintained & Supported by Brainstorm Force. Looking for a perfect base theme? Look no further. Astra is fast, fully customizable and beautiful theme!
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: astra-child
+Template: astra
+*/
+
+*{
+	outline: none;
+}
+.caf-post-layout4 {
+	padding-bottom: 1.5rem;
+	border-bottom: 1px solid grey;
+}
+
+.caf-post-layout4:last-child {
+    border-bottom: none;
+}
+
+.caf-post-layout4 .caf-featured-img-box {
+	border: none;
+	border-radius: 25px;
+}
+
+.data-target-div1 .caf-post-layout4 .caf-post-title h2 a {
+	font-size: 24px;
+}
+
+.data-target-div1 .caf-post-layout4 a.caf-read-more {
+	border: none;
+}
+
+.caf-post-layout4 a.caf-read-more {
+	border: 1px solid #ff5300;
+	border-radius: 25px;
+	background: #ff5300;
+}
+
+.text {
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Limits the content to 5 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.6; /* Adjust based on your styling */
+  max-height: calc(1.6em * 4); /* Matches 5 lines of text */
+}
+
+.text.expanded {
+  -webkit-line-clamp: unset;
+  max-height: none;
+  overflow: visible;
+}
+
+.read-more {
+    margin-bottom: 0;
+    background: none;
+    color: #FF5300;
+    padding: 0;
+    font-weight: 700;
+    font-family: 'Poppins';
+		transition: 0.5s all;
+		font-size: 14px;
+}
+.read-more:hover,
+.read-more:focus{
+    background: none;
+    color: #FF5300;
+		transition: 0.5s all;
+		text-decoration:underline;
+}
+
+.breadcrumb {
+    list-style: none;
+    padding: 0;
+    display: flex;
+		color: #000000;
+		margin: 0;
+}
+.breadcrumb li {
+    margin-right: 5px;
+		font-weight: bold;
+		color: rgb(255 83 0);
+		font-size: 15px;
+		text-transform: uppercase;
+}
+.breadcrumb li::after {
+    content: " > ";
+    margin-left: 5px;
+		color: black;
+}
+.breadcrumb li:last-child::after {
+    content: "";
+}
+.breadcrumb a {
+    text-decoration: none;
+    color: #000000;
+		font-weight: normal;
+}
+.breadcrumb a:hover {
+    color: rgb(255 83 0);
+}
+
+ul.providers-list {
+    list-style: none;
+    display: grid;
+    margin: 0;
+    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+ul.providers-list li {
+    border: 1px solid #b2b2b2;
+    padding: 5px;
+	min-width: 150px;
+	height: 35px;
+	transition: 0.5s all;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+ul.providers-list li:hover,
+ul.providers-list li.current-term{
+	background: rgb(255 83 0);
+	transition: 0.5s all;
+	border-color: rgb(255 83 0);
+}
+
+ul.providers-list li a{
+	  display: flex;
+    justify-content: center;
+    align-items: center;
+		color: #b2b2b2;
+}
+
+ul.providers-list li span{
+		font-size: 13px;
+		line-height: 16px;
+    line-height: 1;
+}
+
+ul.providers-list li:hover a,
+ul.providers-list li.current-term a{
+		color: #ffffff;
+	transition: 0.5s all;
+}
+
+ul.providers-list li img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+	transition: 0.5s all;
+}
+
+ul.providers-list li:hover img,
+ul.providers-list li.current-term img{
+	filter: brightness(170%);
+	transition: 0.5s all;
+}
+
+@media only screen and (max-width: 600px) {
+    .breadcrumb {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    .breadcrumb li{
+        font-size: 13px;
+        display: flex;
+    }
+    .overflowX{
+	    overflow-x: auto;
+    }
+    ul.providers-list{
+		display: flex;
+    }
+}
+
+/*
+ * Header search (HFE) — match play88m.com blog: pill field + small orange icon button (like scroll-to-top).
+ * Beats HFE .hfe-search-submit { min-width: 3% } and flex stretch from the plugin.
+ */
+.elementor-18 #header-search .hfe-search-button-wrapper {
+	max-width: min(420px, 100%);
+	margin-left: auto;
+}
+.elementor-18 #header-search .hfe-search-form__container {
+	display: flex !important;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center !important;
+	min-height: 46px;
+	border-radius: 999px !important;
+	box-sizing: border-box;
+	box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+.elementor-18 #header-search .hfe-search-form__container .hfe-search-form__input {
+	flex: 1 1 auto;
+	min-width: 0;
+	height: auto !important;
+	min-height: 0 !important;
+	margin: 0 !important;
+	padding: 10px 8px 10px 18px !important;
+	border: none !important;
+	border-radius: 0 !important;
+	box-shadow: none !important;
+	line-height: 1.35 !important;
+	-webkit-appearance: none;
+	appearance: none;
+}
+.elementor-18
+	#header-search
+	.hfe-search-form__container
+	.hfe-search-form__input::placeholder {
+	color: #9a9a9a !important;
+	opacity: 1;
+}
+.elementor-18 #header-search .hfe-search-form__container #clear-with-button {
+	flex: 0 0 auto;
+	align-self: center !important;
+	top: auto !important;
+	bottom: auto !important;
+}
+.elementor-18 #header-search .hfe-search-form__container .hfe-search-submit {
+	box-sizing: border-box !important;
+	position: relative !important;
+	flex: 0 0 auto !important;
+	align-self: center !important;
+	width: 32px !important;
+	height: 32px !important;
+	min-width: 32px !important;
+	max-width: 32px !important;
+	min-height: 32px !important;
+	max-height: 32px !important;
+	margin: 5px 7px 5px 5px !important;
+	padding: 0 !important;
+	border: none !important;
+	border-radius: 50% !important;
+	background-color: #ff5300 !important;
+	color: #fff !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	line-height: 0 !important;
+	font-size: 0 !important;
+	cursor: pointer;
+	transition: background-color 0.15s ease, transform 0.1s ease;
+}
+.elementor-18 #header-search .hfe-search-form__container .hfe-search-submit:hover,
+.elementor-18 #header-search .hfe-search-form__container .hfe-search-submit:focus {
+	background-color: #e04a00 !important;
+	color: #fff !important;
+}
+.elementor-18 #header-search .hfe-search-form__container .hfe-search-submit i {
+	font-size: 13px !important;
+	line-height: 1 !important;
+	width: 1em;
+	text-align: center;
+}
+
+/* Blog “LATEST POST” (static JSON): horizontal rows like live listing — thumb left, tag + title + excerpt + pill Read More */
+#caf-post-layout-container .blog-static-post-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	width: 100%;
+	max-width: 100%;
+	margin: 0;
+	padding: 0;
+}
+#caf-post-layout-container .blog-static-post {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	gap: 20px 24px;
+	width: 100%;
+	padding: 24px 0;
+	margin: 0;
+	border: none;
+	border-bottom: 1px solid #e8e8e8;
+	box-sizing: border-box;
+}
+#caf-post-layout-container .blog-static-post:first-child {
+	padding-top: 8px;
+}
+#caf-post-layout-container .blog-static-post:last-child {
+	border-bottom: none;
+}
+#caf-post-layout-container .blog-static-post__media {
+	flex: 0 0 auto;
+	width: min(280px, 38vw);
+	max-width: 280px;
+	display: block;
+	text-decoration: none;
+	border-radius: 15px;
+	overflow: hidden;
+	background: #f0f0f0;
+	align-self: stretch;
+}
+#caf-post-layout-container .blog-static-post__img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+	vertical-align: middle;
+	border-radius: 15px;
+}
+#caf-post-layout-container .blog-static-post__img--placeholder {
+	display: block;
+	min-height: 140px;
+	background: linear-gradient(135deg, #eee 0%, #e2e2e2 100%);
+	border-radius: 15px;
+}
+#caf-post-layout-container .blog-static-post__body {
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+	font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		sans-serif;
+}
+#caf-post-layout-container .blog-static-post__tag {
+	display: inline-block;
+	padding: 4px 10px;
+	background: #000;
+	color: #fff;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	line-height: 1.2;
+	border-radius: 2px;
+}
+#caf-post-layout-container .blog-static-post__title {
+	margin: 0;
+	padding: 0;
+	font-size: clamp(17px, 2.1vw, 22px);
+	font-weight: 700;
+	line-height: 1.35;
+	color: #000;
+}
+#caf-post-layout-container .blog-static-post__title a {
+	color: inherit;
+	text-decoration: none;
+}
+#caf-post-layout-container .blog-static-post__title a:hover {
+	color: #ff5300;
+}
+#caf-post-layout-container .blog-static-post__date {
+	margin: 0;
+	font-size: 13px;
+	font-weight: 500;
+	color: #9a9a9a;
+	line-height: 1.3;
+}
+#caf-post-layout-container .blog-static-post__excerpt {
+	margin: 0;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 1.55;
+	color: #4a4a4a;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+#caf-post-layout-container .blog-static-post__readmore {
+	display: inline-block;
+	margin-top: 4px;
+	padding: 8px 22px;
+	border-radius: 999px;
+	background: #ff5300;
+	color: #fff !important;
+	font-size: 14px;
+	font-weight: 600;
+	text-decoration: none !important;
+	line-height: 1.2;
+	transition: background 0.15s ease, color 0.15s ease;
+}
+#caf-post-layout-container .blog-static-post__readmore:hover,
+#caf-post-layout-container .blog-static-post__readmore:focus {
+	background: #000;
+	color: #fff !important;
+}
+@media (max-width: 767px) {
+	#caf-post-layout-container .blog-static-post {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 16px;
+		padding: 20px 0;
+	}
+	#caf-post-layout-container .blog-static-post__media {
+		width: 100%;
+		max-width: none;
+	}
+}

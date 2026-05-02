@@ -1,0 +1,102 @@
+/* Static slots listing: Ajax Search Pro shell layout + hide broken 512px chrome (no ASP JS). */
+.asp_w_container{display:flex;flex-direction:column;gap:12px;width:100%;max-width:100%}
+.asp_w_container .asp_m{width:100%;max-width:100%;display:flex;justify-content:flex-end}
+
+#ajaxsearchpro1_1 .probox,
+.asp_w_container .ajaxsearchpro.asp_main_container .probox,
+.ajaxsearchpro.asp_main_container.asp_non_compact .probox{
+  display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:stretch!important;
+  width:100%;max-width:min(440px,100%);margin:0 0 0 auto;border:1px solid #e2e8f0;border-radius:999px;background:#fff;
+  box-shadow:0 1px 3px rgba(15,23,42,.08);overflow:hidden;padding:0;gap:0}
+
+#ajaxsearchpro1_1 .proinput,
+.asp_w_container .ajaxsearchpro.asp_main_container .proinput,
+.ajaxsearchpro.asp_main_container.asp_non_compact .proinput{flex:1;min-width:0;display:flex;align-items:center}
+
+#ajaxsearchpro1_1 .proinput form,
+.asp_w_container .ajaxsearchpro.asp_main_container .proinput form,
+.ajaxsearchpro.asp_main_container.asp_non_compact .proinput form{width:100%;margin:0}
+
+#ajaxsearchpro1_1 input.orig,
+.asp_w_container .ajaxsearchpro.asp_main_container input.orig,
+.ajaxsearchpro.asp_main_container.asp_non_compact input.orig{
+  width:100%;box-sizing:border-box;border:0!important;border-radius:0!important;
+  padding:11px 8px 11px 18px!important;font-size:15px!important;background:transparent!important;
+  box-shadow:none!important;color:#1e293b}
+#ajaxsearchpro1_1 input.orig::placeholder,
+.asp_w_container .ajaxsearchpro.asp_main_container input.orig::placeholder,
+.ajaxsearchpro.asp_main_container.asp_non_compact input.orig::placeholder{color:#94a3b8}
+#ajaxsearchpro1_1 input.orig:focus,
+.asp_w_container .ajaxsearchpro.asp_main_container input.orig:focus,
+.ajaxsearchpro.asp_main_container.asp_non_compact input.orig:focus{outline:none}
+
+#ajaxsearchpro1_1 .promagnifier,
+.asp_w_container .ajaxsearchpro.asp_main_container .promagnifier,
+.ajaxsearchpro.asp_main_container.asp_non_compact .promagnifier{
+  cursor:pointer;border:none!important;border-radius:0!important;
+  padding:0 16px!important;margin:0;min-height:100%;background:#f38209!important;color:#fff!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  flex-shrink:0;transition:background .15s ease}
+#ajaxsearchpro1_1 .promagnifier:hover,
+.asp_w_container .ajaxsearchpro.asp_main_container .promagnifier:hover,
+.ajaxsearchpro.asp_main_container.asp_non_compact .promagnifier:hover{background:#e07808!important}
+
+#ajaxsearchpro1_1 .probox svg,
+.asp_w_container .ajaxsearchpro.asp_main_container .probox svg,
+.ajaxsearchpro.asp_main_container.asp_non_compact .probox svg{
+  max-width:24px!important;max-height:24px!important;width:22px!important;height:22px!important;
+  flex-shrink:0;vertical-align:middle}
+#ajaxsearchpro1_1 .promagnifier svg,
+.asp_w_container .ajaxsearchpro.asp_main_container .promagnifier svg,
+.ajaxsearchpro.asp_main_container.asp_non_compact .promagnifier svg{
+  width:20px!important;height:20px!important;max-width:20px!important;max-height:20px!important;fill:#fff}
+
+#ajaxsearchpro1_1 .proclose,
+#ajaxsearchpro1_1 .proclose svg,
+.asp_w_container .ajaxsearchpro.asp_main_container .proclose,
+.asp_w_container .ajaxsearchpro.asp_main_container .proclose svg,
+.ajaxsearchpro.asp_main_container.asp_non_compact .proclose,
+.ajaxsearchpro.asp_main_container.asp_non_compact .proclose svg{
+  display:none!important;visibility:hidden!important;
+  width:0!important;height:0!important;max-width:0!important;max-height:0!important;overflow:hidden!important;
+  pointer-events:none!important;margin:0!important;padding:0!important;border:none!important}
+
+#ajaxsearchpro1_1 .proloading,
+#ajaxsearchpro1_1 input.autocomplete,
+.asp_w_container .ajaxsearchpro.asp_main_container .proloading,
+.asp_w_container .ajaxsearchpro.asp_main_container input.autocomplete,
+.ajaxsearchpro.asp_main_container.asp_non_compact .proloading,
+.ajaxsearchpro.asp_main_container.asp_non_compact input.autocomplete{display:none!important}
+
+#ajaxsearchpro1_1 .prosettings,
+.asp_w_container .ajaxsearchpro.asp_main_container .prosettings,
+.ajaxsearchpro.asp_main_container.asp_non_compact .prosettings{
+  display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important}
+
+#ajaxsearchpro1_1 .promagnifier .asp_text_button,
+.asp_w_container .ajaxsearchpro.asp_main_container .promagnifier .asp_text_button,
+.ajaxsearchpro.asp_main_container.asp_non_compact .promagnifier .asp_text_button{display:none!important}
+
+#ajaxsearchpro1_1 .asp_text_button.hiddend,
+.asp_w_container .ajaxsearchpro.asp_main_container .asp_text_button.hiddend,
+.ajaxsearchpro.asp_main_container.asp_non_compact .asp_text_button.hiddend{
+  position:absolute!important;width:1px!important;height:1px!important;
+  overflow:hidden!important;clip:rect(0,0,0,0)!important;margin:-1px!important;padding:0!important;border:0!important}
+
+.asp_w_container .ajaxsearchpro .proclose,
+.asp_w_container .ajaxsearchpro .proclose svg{
+  display:none!important;width:0!important;height:0!important;max-width:0!important;max-height:0!important}
+
+.asp_w_container .asp_ss,
+div[id^='__original__ajaxsearchprosettings']{display:none!important}
+div.asp_w_container .asp_w.asp_r,
+div.asp_w_container div[id^='__original__ajaxsearchprores']{
+  display:none!important;visibility:hidden!important;pointer-events:none!important;height:0!important;overflow:hidden!important}
+
+.e-loop-item.slots-static-hidden{display:none !important}
+.elementor-widget-loop-grid.slots-static-hide-loop .elementor-loop-container{display:none!important}
+.elementor-widget-loop-grid.slots-static-hide-loop .elementor-pagination{display:none!important}
+.slots-static-empty-state{
+  margin:2rem auto;max-width:28rem;padding:2rem 1.25rem;text-align:center;
+  color:#64748b;font-size:1.0625rem;line-height:1.5;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px}
+.slots-static-empty-state[hidden]{display:none!important}
