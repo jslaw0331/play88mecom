@@ -4,31 +4,31 @@
 <?xml-stylesheet type="text/xsl" href="/main-sitemap.xsl"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<sitemap>
-		<loc><![CDATA[/post-sitemap.xml]]></loc>
+		<loc><![CDATA[https://www.play88me.com/post-sitemap.xml]]></loc>
 		<lastmod><![CDATA[2025-10-02T08:06:08+00:00]]></lastmod>
 	</sitemap>
 	<sitemap>
-		<loc><![CDATA[/page-sitemap.xml]]></loc>
+		<loc><![CDATA[https://www.play88me.com/page-sitemap.xml]]></loc>
 		<lastmod><![CDATA[2026-07-19T05:16:07+00:00]]></lastmod>
 	</sitemap>
 	<sitemap>
-		<loc><![CDATA[/slots-sitemap.xml]]></loc>
+		<loc><![CDATA[https://www.play88me.com/slots-sitemap.xml]]></loc>
 		<lastmod><![CDATA[2026-01-09T16:00:00+00:00]]></lastmod>
 	</sitemap>
 	<sitemap>
-		<loc><![CDATA[/post-archive-sitemap.xml]]></loc>
+		<loc><![CDATA[https://www.play88me.com/post-archive-sitemap.xml]]></loc>
 		<lastmod><![CDATA[2026-01-09T16:00:00+00:00]]></lastmod>
 	</sitemap>
 	<sitemap>
-		<loc><![CDATA[/category-sitemap.xml]]></loc>
+		<loc><![CDATA[https://www.play88me.com/category-sitemap.xml]]></loc>
 		<lastmod><![CDATA[2025-10-02T09:33:18+00:00]]></lastmod>
 	</sitemap>
 	<sitemap>
-		<loc><![CDATA[/post_tag-sitemap.xml]]></loc>
+		<loc><![CDATA[https://www.play88me.com/post_tag-sitemap.xml]]></loc>
 		<lastmod><![CDATA[2025-10-02T08:06:08+00:00]]></lastmod>
 	</sitemap>
 	<sitemap>
-		<loc><![CDATA[/providers-sitemap.xml]]></loc>
+		<loc><![CDATA[https://www.play88me.com/providers-sitemap.xml]]></loc>
 		<lastmod><![CDATA[2026-01-09T16:00:00+00:00]]></lastmod>
 	</sitemap>
 </sitemapindex>
