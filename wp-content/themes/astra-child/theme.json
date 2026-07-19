@@ -1,22 +1,7 @@
 {
 	"settings": {
 		"typography": {
-			"fontFamilies": [
-				{
-					"fontFamily": "futura",
-					"slug": "futura",
-					"fontFace": [
-						{
-							"fontFamily": "futura",
-							"fontStretch": "",
-							"fontStyle": "normal",
-							"fontWeight": "400",
-							"src": "/wp-content/uploads/useanyfont/5499futura.woff2"
-						}
-					],
-					"isUAF": true
-				}
-			]
+			"fontFamilies": []
 		}
 	}
 }

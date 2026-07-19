@@ -25,20 +25,41 @@ function UniteProviderAdminUC(){
 		if(isMultiple == undefined)
 			isMultiple = false;
 
+		var mediaTypes = type;
+		if(typeof mediaTypes === "string" && mediaTypes.indexOf(",") !== -1)
+			mediaTypes = mediaTypes.split(",");
+
+		var hasSvg = false;
+		if(Array.isArray(mediaTypes)){
+			mediaTypes = mediaTypes.map(function(item){
+				item = jQuery.trim(item);
+				if(item === "svg"){
+					hasSvg = true;
+					return "image/svg+xml";
+				}
+				return item;
+			}).filter(function(item){
+				return item !== "";
+			});
+		}else if(mediaTypes === "svg"){
+			hasSvg = true;
+			mediaTypes = "image/svg+xml";
+		}
+
 		// Media Library params
 		let options = {
 			//frame:      'post',
             //state:      'insert',
 			title : title,
 			multiple : isMultiple,
-			library : { type : ( type == 'svg' ? 'image/svg+xml' : type ) },
+			library : { type : mediaTypes },
 			button : { text : 'Insert' }
 		}
 
 		var frame = wp.media(options);		
 
 		// if SVG only
-		if (type == 'svg') {
+		if (hasSvg === true) {
 			frame.on('open', function() {
 				setTimeout(() => {
 					const fileInputs = document.querySelectorAll('.media-frame input[type="file"]');
@@ -641,29 +662,60 @@ function UniteProviderAdminUC(){
 	/**
 	 * get first editor options
 	 */
-	function initEditor_tinyMCE_GetOptions(objEditorsOptions) {
-		if (jQuery.isEmptyObject(objEditorsOptions))
-			return {};
 
-		for (var key in objEditorsOptions) {
-			var options = objEditorsOptions[key];
+    function initEditor_tinyMCE_GetOptions(objEditorsOptions) {
+        if (!objEditorsOptions || jQuery.isEmptyObject(objEditorsOptions))
+            return {};
 
-			if (options !== null)
-				return options;
-		}
+        for (var key in objEditorsOptions) {
+            if (!objEditorsOptions.hasOwnProperty(key)) continue;
+            var options = objEditorsOptions[key];
 
-		return {};
-	}
+            if (options != null)
+                return options;
+        }
+
+        return {};
+    }
 
 	/**
 	 * trigger change on editor, pass back
 	 */
-	function onEditorChange(editor, objSettings){
+    var uelm_ucEditorChangeTimers = uelm_ucEditorChangeTimers || {};
 
-		var objInput = editor.getElement();
-		objInput = jQuery(objInput);
-		objSettings.triggerKeyupEvent(objInput);
-	}
+    function onEditorChange(editor, objSettings) {
+
+        var DEBOUNCE_DELAY = 600; 
+
+        var editorId = editor && (editor.id || (editor.getElement && editor.getElement().id));
+        if (!editorId)
+            return;
+
+        if (uelm_ucEditorChangeTimers[editorId]) {
+            clearTimeout(uelm_ucEditorChangeTimers[editorId]);
+        }
+
+        uelm_ucEditorChangeTimers[editorId] = setTimeout(function () {
+
+            if (!editor || !editor.getElement) {
+                return;
+            }
+
+            var el = editor.getElement();
+            if (!el)
+                return;
+
+            editor.save();
+
+            var $el = jQuery(el);
+
+            $el.trigger("keyup");
+            $el.trigger("change");
+
+            delete uelm_ucEditorChangeTimers[editorId];
+
+        }, DEBOUNCE_DELAY);
+    }
 
 	/**
 	 * init tinymce editor
@@ -713,6 +765,7 @@ function UniteProviderAdminUC(){
 	 * init editors - run function after timeout
 	 */
 	function initEditors_afterTimeout(objSettings, arrEditorNames, isForce) {
+
 		if (typeof window.tinyMCEPreInit === "undefined" && arrEditorNames.length)
 			throw new Error("Init " + arrEditorNames[0] + " editor error. no other editors found on page");
 
@@ -724,8 +777,10 @@ function UniteProviderAdminUC(){
 
 			if (isForce === true
 				|| window.tinyMCEPreInit.mceInit.hasOwnProperty(inputID) === false
-				|| window.tinyMCEPreInit.mceInit[inputID] === null)
-				initEditor_tinyMCE(inputID, objSettings);
+				|| window.tinyMCEPreInit.mceInit[inputID] === null) {
+                    initEditor_tinyMCE(inputID, objSettings);
+            }
+				
 		});
 	}
 
@@ -928,8 +983,16 @@ function UniteProviderAdminUC(){
 					//
 				}
 
-				window.tinyMCEPreInit.mceInit[editorID] = null;
-				window.tinyMCEPreInit.qtInit[editorID] = null;
+				// window.tinyMCEPreInit.mceInit[editorID] = null;
+				// window.tinyMCEPreInit.qtInit[editorID] = null;
+
+                if (window.tinyMCEPreInit && window.tinyMCEPreInit.mceInit) {
+                    delete window.tinyMCEPreInit.mceInit[editorID];
+                }
+
+                if (window.tinyMCEPreInit && window.tinyMCEPreInit.qtInit) {
+                    delete window.tinyMCEPreInit.qtInit[editorID];
+                }
 			}
 		});
 	}

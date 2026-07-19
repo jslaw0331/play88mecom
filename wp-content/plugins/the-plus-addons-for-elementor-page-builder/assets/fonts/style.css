@@ -1,5 +1,21 @@
 @font-face{font-family:'theplus';src:url(/wp-content/plugins/the-plus-addons-for-elementor-page-builder/assets/fonts/theplus.eot?o619t4);src:url('/wp-content/plugins/the-plus-addons-for-elementor-page-builder/assets/fonts/theplus.eot?o619t4#iefix') format('embedded-opentype'),url(/wp-content/plugins/the-plus-addons-for-elementor-page-builder/assets/fonts/theplus.ttf?o619t4) format('truetype'),url(/wp-content/plugins/the-plus-addons-for-elementor-page-builder/assets/fonts/theplus.woff?o619t4) format('woff'),url('/wp-content/plugins/the-plus-addons-for-elementor-page-builder/assets/fonts/theplus.svg?o619t4#theplus') format('svg');font-weight:400;font-style:normal;font-display:block}[class^="theplus-i-"],[class*=" theplus-i-"]{font-family:'theplus'!important;speak:never;font-style:normal;font-weight:400;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 
+.theplus-i-duration:before {
+  content: "\e9b7";
+}
+
+.theplus-i-move:before {
+  content: "\e9b8";
+}
+
+.theplus-i-target:before {
+  content: "\e9b9";
+}
+
+.theplus-i-play:before {
+  content: "\e9b6";
+}
+
 .theplus-i-minimize:before {
   content: "\e976";
 }

@@ -131,7 +131,8 @@
                     $btn.prepend(tp_btn_txt);
 
                     if (res.success) {
-                        var editUrl = res.success.edit_url.replace(/&amp;/g, '&');
+
+                        var editUrl = res.data.edit_url.replace(/&amp;/g, '&');
                         // window.location.href = editUrl;
                         window.open(editUrl, '_blank');
                     } else {

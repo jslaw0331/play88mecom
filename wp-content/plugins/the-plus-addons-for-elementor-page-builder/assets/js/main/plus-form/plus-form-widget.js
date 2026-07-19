@@ -51,6 +51,7 @@
             var formFields = [];
             form.querySelectorAll('.tpae-form-field').forEach(function (field) {
                 var input = field.querySelector('input, textarea');
+                var select = field.querySelector('select');
                 var label = field.querySelector('label') ? field.querySelector('label').textContent.trim() : '';
                                 
                 if (input) {
@@ -85,6 +86,22 @@
                     
                     formData[input.name || label || input.id] = inputValue;
 
+                } else if (select) {
+                    var selectValue = select.value;
+                    var selectID = select.getAttribute('id') || '';
+                    var selectName = select.getAttribute('name') || '';
+
+                    formFields.push({
+                        field_id: selectID,
+                        field_name: selectName,
+                        field_value: selectValue
+                    });
+                    if (select.required && selectValue === '') {
+                        isValid = false;
+                        showFieldError(select, requiredFieldsError.replace('%field%', label));
+                    }
+
+                    formData[selectName || label || selectID] = selectValue;
                 }
             });
             if (!isValid) {

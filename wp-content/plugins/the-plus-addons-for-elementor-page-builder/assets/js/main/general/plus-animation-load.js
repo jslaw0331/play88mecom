@@ -122,17 +122,11 @@
 				})
 			})
 		};
-		$(document).ready(e),$(window).on('load',e),
-		$(document.body).on('post-load', function() {
-			e()
-		}),
-		$(document).ready(d),$(window).on('load',d),
-		$(document.body).on('post-load', function() {
-			d()
-		});
-		$(document).ready(function(){
-		e(); d();
-		});
+		
+		$(document).ready(e), $(window).on('load', e),
+		$(document.body).on('post-load', function() { e(); }),
+		$(document).ready(d), $(window).on('load', d),
+		$(document.body).on('post-load', function() { d(); });
 	});
 } ( jQuery ) );
 /*--- on load animation ----*/

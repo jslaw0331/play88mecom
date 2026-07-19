@@ -5,6 +5,15 @@
     width: 100%
 }
 
+.pt_plus_video_player.text-center{
+    text-align: center;
+}
+.pt_plus_video_player.text-right{
+    text-align: right;
+}
+.pt_plus_video_player.text-left{
+    text-align: left;
+}
 .pt_plus_video-box-shadow.sticky-active{
     width: 300px;
     height: 175px;
@@ -393,4 +402,51 @@ button.ts-video-play-btn.ts-video-blay-btn-youtube {
 }
 .wpb_video_wrapper .fluidvids {
     position: initial;
+}
+/* Full Height option (Video Player widget) */
+.elementor-element.tpae-video-full-height-yes {
+    --align-self: stretch;
+    --flex-grow: 1;
+    --flex-direction: column;
+    /* Direct fallbacks (used on classic Elementor where the var() mapping rule isn't present) */
+    align-self: stretch;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.tpae-video-full-height-yes > .elementor-widget-container,
+.tpae-video-full-height-yes > .pt_plus_video-box-shadow,
+.tpae-video-full-height-yes .pt_plus_video-box-shadow,
+.tpae-video-full-height-yes .pt_plus_video_player,
+.tpae-video-full-height-yes .ts-video-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+}
+.tpae-video-full-height-yes .ts-video-wrapper.embed-container,
+.tpae-video-full-height-yes .ts-video-embed-container {
+    padding-bottom: 0 !important;
+    height: auto !important;
+    flex: 1 1 auto;
+    position: relative;
+    overflow: hidden;
+}
+.tpae-video-full-height-yes .ts-video-wrapper iframe,
+.tpae-video-full-height-yes .ts-video-wrapper video,
+.tpae-video-full-height-yes .ts-video-embed-container iframe,
+.tpae-video-full-height-yes .ts-video-embed-container video,
+.tpae-video-full-height-yes .embed-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+.tpae-video-full-height-yes .ts-video-thumbnail {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
 }

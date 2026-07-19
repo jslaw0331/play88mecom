@@ -325,6 +325,8 @@ var WP_Optimize_Cache = function () {
 				$('#minify-preload').hide();
 			}
 
+			$(document).trigger('wp-optimize/cache/toggle-status', {enabled: response.enabled});
+
 			if (response.result) {
 				// If Result is true, show the success icon.
 				success_icon.show();
@@ -493,16 +495,6 @@ var WP_Optimize_Cache = function () {
 		cache_preload_status_el.text(response.message);
 		update_cache_size_information(response);
 	}
-
-	// Handle avatar display settings
-	$('#wpo-show-avatars').on('change', function() {
-		if ($(this).is(':checked')) {
-			$('#wpo-host-gravatars-locally-container').show();
-		} else {
-			$('#wpo-host-gravatars-locally').prop('checked', false);
-			$('#wpo-host-gravatars-locally-container').hide();
-		}
-	});
 
 	/**
 	 * Run update information about cache size.

@@ -46,7 +46,7 @@ function theplus_carousel_list(data_widget=''){
 
         var data = $self[0].dataset;
 
-        parsedData = data && data.result ? JSON.parse(data.result) : '';
+        const parsedData = data && data.result ? JSON.parse(data.result) : {};
         var getDIrection = parsedData.carousel_direction,
             rtlVal = false;
 

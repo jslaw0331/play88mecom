@@ -57,7 +57,8 @@
 								$("#"+connection).find('.info-box-inner[data-slick-index="'+parseInt(nextSlide)+'"]').trigger("hover");
 							}
 							
-							if ( $.isFunction($.fn.plus_infobox_connection) ) {
+							// F-12 fix: $.isFunction removed in jQuery 4. Use typeof.
+							if ( typeof $.fn.plus_infobox_connection === 'function' ) {
 								plus_infobox_connection(parseInt(nextSlide),connection);
 							}						
 							

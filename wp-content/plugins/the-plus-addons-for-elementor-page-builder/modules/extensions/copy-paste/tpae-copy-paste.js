@@ -28,7 +28,7 @@
                         actions: [
                             {
                                 name: "tp_plus_copy",
-                                title: "Plus Copy",
+                                title: __("Plus Copy", "tpebl"),
                                 icon: "eicon-copy",
                                 callback: function () {
                                     var b = {};
@@ -41,7 +41,7 @@
 
                                     b.tpelecode = h.model.toJSON();
 
-                                    console.log(b);
+                                    // console.log(b);
 
                                     // Create a textarea element
                                     var textarea = document.createElement('textarea');
@@ -57,7 +57,7 @@
                             },
                             {
                                 name: "tp_plus_paste",
-                                title: "Plus Paste",
+                                title: __("Plus Paste", "tpebl"),
                                 icon: "eicon-import-kit",
                                 callback: function () {
 
@@ -92,7 +92,9 @@
                                                 inputArea.addEventListener('paste', async function (event) {
                                                     event.preventDefault();
                                                     var pastedData = event.clipboardData.getData("text");
-                                                    console.log(pastedData);
+
+                                                    // TODO: gate behind a debug flag before re-enabling.
+                                                    // console.log(pastedData);
 
                                                     if (tpae_isJSON(pastedData) == false) {
                                                         alert(Json_error);
@@ -100,7 +102,7 @@
                                                     }
 
                                                     var parsedData = JSON.parse(pastedData);
-                                                    clearContentKeys( parsedData, keysToClear );
+                                                    clearContentKeys(parsedData, keysToClear);
 
                                                     if (!parsedData.tpelecode || typeof parsedData !== 'object') {
                                                         alert(elementor_json_error);
@@ -153,7 +155,7 @@
                                                 }
 
                                                 var parsedData = JSON.parse(pastedData);
-                                                clearContentKeys( parsedData, keysToClear );
+                                                clearContentKeys(parsedData, keysToClear);
 
                                                 if (!parsedData.tpelecode || typeof parsedData !== 'object') {
                                                     alert(elementor_json_error);
@@ -182,10 +184,10 @@
 
     const tpae_manage_paste = async (parsedData, h) => {
 
-        let message1 = __('We are pasting your design' , "tpebl");
-        let message2 = __('We have pasted your design' , "tpebl");
-        let message3 = __('Now we are importing your design' , "tpebl");
-        let message4 = __('We have successfully imported the design' , "tpebl");
+        let message1 = __('We are pasting your design', "tpebl");
+        let message2 = __('We have pasted your design', "tpebl");
+        let message3 = __('Now we are importing your design', "tpebl");
+        let message4 = __('We have successfully imported the design', "tpebl");
 
         showTpaePopup(message1);
 
@@ -231,7 +233,7 @@
 
         await tpae_createWidgetElements(parsedData, h);
 
-        showTpaePopup( message4, [], true );
+        showTpaePopup(message4, [], true);
 
         await new Promise(resolve => setTimeout(resolve, 5000));
 
@@ -357,6 +359,9 @@
                 insertOptions
         });
 
+        // Restore dynamic tag bindings for the created element and all nested children
+        // tpae_applyDynamicSettings( createdElement, sourceElementData );
+
         if (containsImage) {
             jQuery.ajax({
                 url: theplus_cross_cp.ajax_url,
@@ -378,6 +383,10 @@
                     }
                     $e.run("document/elements/delete", { container: createdElement });
                     $e.run("document/elements/create", { model: elementModel, container: targetContainer, options: insertOptions });
+
+                    // var reimportedElement = $e.run("document/elements/create", { model: elementModel, container: targetContainer, options: insertOptions });
+                    // // Restore dynamic tag bindings after media-import re-creation
+                    // tpae_applyDynamicSettings( reimportedElement, importedData );
                 }
             });
         }
@@ -386,6 +395,45 @@
     function tpae_parseElements(elements) {
         return elements ? elements.map(el => ({ ...el })) : [];
     }
+
+    /**
+     * Recursively applies settings (including dynamic tags) to a created element and its children.
+     *
+     * After document/elements/create, dynamic tag bindings stored in settings.__dynamic__
+     * are not always activated by Elementor's model constructor. Re-applying settings via
+     * document/elements/settings with { external: true } ensures __dynamic__ is properly
+     * registered for the element and all nested children.
+     *
+     * @param {Object} container   Elementor container object for the created element.
+     * @param {Object} elementData Source element data (from toJSON) including settings and elements.
+     */
+    // const tpae_applyDynamicSettings = ( container, elementData ) => {
+    //     if ( ! container || ! elementData || ! elementData.settings ) {
+    //         return;
+    //     }
+
+    //     try {
+    //         $e.run( 'document/elements/settings', {
+    //             container: container,
+    //             settings: elementData.settings,
+    //             options: { external: true },
+    //         } );
+    //     } catch ( err ) {
+    //         console.warn( 'TPAE: Could not restore dynamic settings', err );
+    //     }
+
+    //     if ( Array.isArray( elementData.elements ) && elementData.elements.length > 0 ) {
+    //         var childModels = ( container.children && container.children.models ) ? container.children.models : [];
+    //         elementData.elements.forEach( function( childData, index ) {
+    //             if ( childModels[ index ] ) {
+    //                 var childContainer = typeof childModels[ index ].getContainer === 'function'
+    //                     ? childModels[ index ].getContainer()
+    //                     : childModels[ index ];
+    //                 tpae_applyDynamicSettings( childContainer, childData );
+    //             }
+    //         } );
+    //     }
+    // };
 
     function tpae_isJSON(str) {
         try {
@@ -452,7 +500,7 @@
             storedIconImg.src = theplus_cross_cp.asset_url + 'assets/svg/tp_loader.svg';
             storedIconImg.width = 60;
             storedIconImg.height = 60;
-            storedIconImg.alt = "Loading...";
+            storedIconImg.alt = __("Loading...", "tpebl");
             storedIconImg.className = "tpae-spinner";
         }
     };
@@ -525,21 +573,21 @@
 
 })(jQuery);
 
-function clearContentKeys( obj, keysToClear ) {
-    if ( typeof obj !== 'object' || obj === null ) {
+function clearContentKeys(obj, keysToClear) {
+    if (typeof obj !== 'object' || obj === null) {
         return;
     }
 
-    if ( Array.isArray( obj ) ) {
-        obj.forEach( item => clearContentKeys( item, keysToClear ) );
+    if (Array.isArray(obj)) {
+        obj.forEach(item => clearContentKeys(item, keysToClear));
     } else {
-        for ( let key in obj ) {
-            if ( !obj.hasOwnProperty( key ) ) continue;
+        for (let key in obj) {
+            if (!obj.hasOwnProperty(key)) continue;
 
-            if ( keysToClear.includes( key ) ) {
+            if (keysToClear.includes(key)) {
                 obj[key] = '';
             } else if (typeof obj[key] === 'object') {
-                clearContentKeys( obj[key], keysToClear );
+                clearContentKeys(obj[key], keysToClear);
             }
         }
     }

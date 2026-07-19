@@ -19,10 +19,10 @@
 						
 						if(moretxt.style.display != "none") {
 							moretxt.style.display = "none";
-							current.innerHTML = buttonText.readMore
+							current.textContent = buttonText.readMore
 						}else {
 							moretxt.style.display = "inline";
-							current.innerHTML = buttonText.readLess
+							current.textContent = buttonText.readLess
 						}
 	
 						if(testiDiv[0].classList.contains('list-isotope')){

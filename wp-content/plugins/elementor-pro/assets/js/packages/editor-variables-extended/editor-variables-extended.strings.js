@@ -1,1 +1,1 @@
- 
+__( 'CSS function', 'elementor-pro' );

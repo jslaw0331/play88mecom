@@ -15,7 +15,7 @@
                                             </div>
                                             <div class="tp-popup-body" style="height:100%;position:relative;">
                                                 <iframe width="100%" height="100%"
-                                                    src="https://www.youtube.com/embed/GbUvqM_mnXk?autoplay=1&mute=1&rel=0&showinfo=0"
+                                                    src="https://www.youtube.com/embed/hByRIff5V0s?autoplay=1&mute=1&rel=0&showinfo=0"
                                                     title="YouTube video" frameborder="0" allowfullscreen>
                                                 </iframe>
                                             </div>
@@ -27,7 +27,10 @@
         jQuery(document).on('click', '.toplevel_page_theplus_welcome_page .tpae-update-popup-container .tp-update-popup-inner .theplus-i-cross', function(e) {
             e.preventDefault();
             
-            jQuery('.tpae-update-popup-container').hide();
+            var VideoPopup = jQuery('.tpae-update-popup-container');
+            
+            VideoPopup.find('iframe').remove();
+            VideoPopup.hide();
 
             var menuItem = document.querySelector('#toplevel_page_theplus_welcome_page');
             if (menuItem) {
@@ -43,7 +46,7 @@
                     type: 'tpae_update_popup_close',
                 },
                 success: function(response) {
-                    jQuery('.tpae-update-popup-container').hide();
+                    VideoPopup.hide();
 
                     var menuItem = document.querySelector('#toplevel_page_theplus_welcome_page');
 					if (menuItem) {

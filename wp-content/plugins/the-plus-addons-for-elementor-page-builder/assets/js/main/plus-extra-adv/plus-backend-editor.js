@@ -199,7 +199,7 @@
 			plus_cf7_form();
 		}
 		/*-video post---*/
-		if(wid_sec.find('iframe').length>0 && typeof initFluidVids !== 'undefined' && $.isFunction(initFluidVids)){
+		if(wid_sec.find('iframe').length>0 && typeof initFluidVids === 'function'){
 			initFluidVids();
 		}
 		/*-video post ----*/

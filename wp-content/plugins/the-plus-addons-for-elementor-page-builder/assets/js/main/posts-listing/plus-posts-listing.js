@@ -54,7 +54,8 @@
 				b.window.on("resize", function() {
 					c('[data-enable-isotope="1"]')
 				}),
-				b.document.on("load resize", function() {
+				
+				b.window.on("load resize", function() {
 					c('[data-enable-isotope="1"]')
 				}),
 				$(document).ready(function() {

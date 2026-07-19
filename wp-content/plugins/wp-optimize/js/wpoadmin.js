@@ -1176,6 +1176,9 @@ var WP_Optimize = function () {
 
 			if (resp && resp.hasOwnProperty('settings_auto_cleanup_contents')) {
 				$('#wpo_auto_cleanup').replaceWith(resp.settings_auto_cleanup_contents);
+				if ('function' === typeof $.fn.select2) {
+					$(".wpo-select2").not('.select2-hidden-accessible').select2();
+				}
 			}
 
 			if (resp && resp.hasOwnProperty('logging_settings_contents')) {
@@ -1895,7 +1898,7 @@ var WP_Optimize = function () {
 	/**
 	 * Hide introduction notice
 	 */
-	$('.wpo-introduction-notice .notice-dismiss, .wpo-introduction-notice .close').on('click', function(e) {
+	$('#wp-optimize-wrap').on('click', '.wpo-introduction-notice .notice-dismiss, .wpo-introduction-notice .close', function(e) {
 		$('.wpo-introduction-notice').remove();
 		send_command('dismiss_install_or_update_notice', null, function (resp) {
 			if (resp && resp.hasOwnProperty('error')) {
@@ -2486,5 +2489,11 @@ jQuery(function ($) {
 			$(this).remove();
 			$iframe.focus();
 		}
+	});
+
+	// Show/hide Enable the caching menu in the admin bar on cache/minify status change
+	$(document).on('wp-optimize/cache/toggle-status wp-optimize/minify/toggle-status', function() {
+		var minify_or_cache_enabled = $('#wpo_min_enable_minify').prop('checked') || $('#enable_page_caching').prop('checked');
+		$('#enable_cache_in_admin_bar_option').toggleClass('wpo_hidden', !minify_or_cache_enabled);
 	});
 });

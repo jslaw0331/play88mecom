@@ -5,12 +5,12 @@
     const INSTALLING_TEXT = __("Installing WDesignKit", "tpebl");
     const WAITING_TEXT = __("Waiting...", "tpebl");
 
-    $("document").ready(function () {
+    $(document).ready(function () {
         let templateAddSection = $("#tmpl-elementor-add-section");
 
         if (0 < templateAddSection.length) {
             var oldTemplateButton = templateAddSection.html();
-                oldTemplateButton = oldTemplateButton.replace('<div class="elementor-add-section-drag-title', '<div data-mode="dark" class="elementor-add-section-area-button elementor-action-tp-wdkit-button" title="' + __("WDesignKit") + '"><a href="#" class="tp-wkit-main-logo-div"></a></div><div class="elementor-add-section-drag-title');
+                oldTemplateButton = oldTemplateButton.replace('<div class="elementor-add-section-drag-title', '<div data-mode="dark" class="elementor-add-section-area-button elementor-action-tp-wdkit-button" title="' + __("WDesignKit", "tpebl") + '"><span class="tp-wkit-main-logo-div"></span></div><div class="elementor-add-section-drag-title');
                 templateAddSection.html(oldTemplateButton);
         }
 
@@ -71,7 +71,7 @@
                         });
                     },
                     error: function (xhr, status, error) {
-                        console.log('Response:', xhr.responseText);
+                        console.error('TPAE wdkit preview popup dismiss failed:', status, error);
                     }
                 });
             });

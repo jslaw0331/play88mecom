@@ -1037,7 +1037,7 @@ __webpack_require__(/*! core-js/modules/esnext.iterator.find.js */ "../node_modu
 class LightboxManager extends elementorModules.ViewModule {
   static getLightbox() {
     const lightboxPromise = new Promise(resolveLightbox => {
-        __webpack_require__.e(/*! import() | lightbox */ "lightbox").then(__webpack_require__.t.bind(__webpack_require__, /*! elementor-frontend/utils/lightbox/lightbox */ "../assets/dev/js/frontend/utils/lightbox/lightbox.js", 23)).then(({
+        Promise.all(/*! import() | lightbox */[__webpack_require__.e("vendors-node_modules_dompurify_dist_purify_cjs_js"), __webpack_require__.e("lightbox")]).then(__webpack_require__.t.bind(__webpack_require__, /*! elementor-frontend/utils/lightbox/lightbox */ "../assets/dev/js/frontend/utils/lightbox/lightbox.js", 23)).then(({
           default: LightboxModule
         }) => resolveLightbox(new LightboxModule()));
       }),
@@ -1167,6 +1167,7 @@ class SwiperHandler {
   createSwiperInstance(container, config) {
     const SwiperSource = window.Swiper;
     SwiperSource.prototype.adjustConfig = this.adjustConfig;
+    config = this.applyMotionPreferences(config);
     return new SwiperSource(container, config);
   }
 
@@ -1212,6 +1213,16 @@ class SwiperHandler {
       };
     });
     return config;
+  }
+  applyMotionPreferences(config) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion) {
+      return config;
+    }
+    return Object.assign({}, config, {
+      speed: 0,
+      autoplay: false
+    });
   }
 }
 exports["default"] = SwiperHandler;
@@ -2123,7 +2134,7 @@ exports["default"] = void 0;
 class _default extends elementorModules.Module {
   constructor() {
     super();
-    elementorFrontend.elementsHandler.attachHandler('text-path', () => __webpack_require__.e(/*! import() | text-path */ "text-path").then(__webpack_require__.bind(__webpack_require__, /*! ./handlers/text-path */ "../modules/shapes/assets/js/frontend/handlers/text-path.js")));
+    elementorFrontend.elementsHandler.attachHandler('text-path', () => Promise.all(/*! import() | text-path */[__webpack_require__.e("vendors-node_modules_dompurify_dist_purify_cjs_js"), __webpack_require__.e("text-path")]).then(__webpack_require__.bind(__webpack_require__, /*! ./handlers/text-path */ "../modules/shapes/assets/js/frontend/handlers/text-path.js")));
   }
 }
 exports["default"] = _default;

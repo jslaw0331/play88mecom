@@ -2202,6 +2202,8 @@
 .ultimate-post-kit-dashboard .ultimate-post-kit-custom-code-save-btn,
 .ultimate-post-kit-dashboard .ultimate-post-kit-custom-code-reset-btn {
   padding: 3px 30px;
+  line-height: 40px;
+  font-size: 16px;
   color: #fff;
   background: linear-gradient(to right, #00A85C, #58D34D);
   border: 0;
@@ -2210,15 +2212,17 @@
 .ultimate-post-kit-dashboard .ultimate-post-kit-custom-code-save-btn {
   margin-right: 12px;
 }
+.ultimate-post-kit-dashboard .ultimate-post-kit-custom-code-save-btn:hover {
+  background: linear-gradient(to right, #58D34D, #00A85C);
+}
 .ultimate-post-kit-dashboard .ultimate-post-kit-custom-code-reset-btn,
 .ultimate-post-kit-dashboard .ultimate-post-kit-white-label-save-btn {
-  background: #ffcdd9;
-  color: #EF476F;
+  background: linear-gradient(to right, #fa6336, #ff3c3c);
+  color: #fff;
 }
 .ultimate-post-kit-dashboard .ultimate-post-kit-custom-code-reset-btn:hover,
 .ultimate-post-kit-dashboard .ultimate-post-kit-white-label-save-btn:hover {
-  background: #EF476F;
-  color: #fff;
+  background: linear-gradient(to right, #ff3c3c, #fa6336);
 }
 .ultimate-post-kit-dashboard .upk-code-message,
 .ultimate-post-kit-dashboard .upk-white-label-message {
@@ -2887,7 +2891,7 @@
 }
 
 #elementor-panel #elementor-controls .upk-disabled-control .elementor-control-field:after {
-  content: "This is a pro control, available with Ultimate Post Kit Pro version.";
+  content: var(--upk-pro-control-tooltip);
   padding: 10px;
   display: none;
   position: absolute;
@@ -2952,17 +2956,17 @@
 }
 
 .upk-new-control:after {
-  content: "NEW";
+  content: var(--upk-badge-new);
   background-color: #55c10c;
 }
 
 .upk-pro-control:after {
-  content: "PRO";
+  content: var(--upk-badge-pro);
   background-color: #e62a3f;
 }
 
 .upk-updated-control:after {
-  content: "UPDATED";
+  content: var(--upk-badge-updated);
   background-color: #2d60ce;
   color: #fff;
   font-size: 7px;
@@ -4548,6 +4552,12 @@
 }
 .ep-pagination .upk-pagination li:hover a, .ep-pagination .upk-pagination li.upk-active a {
   color: #ef233c;
+}
+.ep-pagination .upk-pagination li:hover a span,
+.ep-pagination .upk-pagination li:hover a i,
+.ep-pagination .upk-pagination li.upk-active a span,
+.ep-pagination .upk-pagination li.upk-active a i {
+  color: inherit;
 }
 .ep-pagination .upk-pagination li a {
   font-size: 16px;
@@ -8016,6 +8026,7 @@
   background-clip: padding-box;
   -moz-background-clip: padding;
   -webkit-background-clip: padding;
+  white-space: nowrap;
 }
 .upk-alter-grid .upk-category a:hover {
   color: #EF233C;
@@ -10543,6 +10554,8 @@
   margin-left: 5px;
 }
 .upk-paradox-slider .upk-post-time {
+  display: inline-flex;
+  align-items: center;
   margin-left: 5px;
 }
 .upk-paradox-slider .upk-post-time i {
@@ -10556,7 +10569,6 @@
 }
 .upk-paradox-slider .upk-meta > div {
   position: relative;
-  display: inline-flex;
 }
 .upk-paradox-slider .upk-meta > div:before {
   content: attr(data-separator);
@@ -15732,6 +15744,17 @@
 }
 .upk-gratis-grid .upk-meta {
   gap: 10px;
+}
+.upk-gratis-grid .upk-meta .upk-date-reading > div {
+  position: relative;
+  display: inline-flex;
+}
+.upk-gratis-grid .upk-meta .upk-date-reading > div:before {
+  content: attr(data-separator);
+  margin: 0 5px;
+}
+.upk-gratis-grid .upk-meta .upk-date-reading > div:nth-child(1)::before {
+  display: none;
 }
 .upk-gratis-grid .upk-meta .upk-flex-middle {
   gap: 5px;

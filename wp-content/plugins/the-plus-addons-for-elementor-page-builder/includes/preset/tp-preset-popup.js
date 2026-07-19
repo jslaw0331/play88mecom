@@ -115,7 +115,7 @@
                                 },
                                 success: function (res) {
 
-                                    if(!res.success){
+                                    if('invalid-permission' === res.data){
                                         alert('Only site admins can install presets. Please ask your admin to complete the installation.')
                                     }
 
